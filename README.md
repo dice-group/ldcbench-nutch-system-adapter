@@ -1,4 +1,4 @@
-# LDSpider adapter for LDCBench
+# Apache Nutch adapter for LDCBench
 
 The system adapter for [Apache Nutch](https://nutch.apache.org/).
 
