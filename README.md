@@ -1,6 +1,6 @@
 # LDSpider adapter for LDCBench
 
-The system adapter for [LDSpider](https://github.com/dice-group/ldspider).
+The system adapter for [Apache Nutch](https://nutch.apache.org/).
 
 ## Building and pushing images
 
