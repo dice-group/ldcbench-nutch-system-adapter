@@ -17,7 +17,7 @@ public class SystemAdapter extends AbstractSystemAdapter {
     private static final Logger LOGGER = LoggerFactory.getLogger(SystemAdapter.class);
 
 	
-	private final static String ANUTCH_IMAGE = "apache/nutch";
+	private final static String ANUTCH_IMAGE = "dice-group/anutch";
     protected boolean terminating = false;
     protected String[] NUTCH_ENV;
 
@@ -45,12 +45,12 @@ public class SystemAdapter extends AbstractSystemAdapter {
         
         
         	
-        NUTCH_ENV = new String[]{ "b=10",
-                "oe="+sparqlUrl,
-                "o=tempFile",
-                "user_sparql=" + sparqlUser,
-                "passwd_sparql=" + sparqlPwd,
-                "s="+String.join(",", seedURIs)};
+        NUTCH_ENV = new String[]{ "NUM_ROUNDS=10",
+                "SPARQL_URL="+sparqlUrl,
+                "NUTCH_BASE_DIR=/var/nutch/bin",
+                "SPARQL_USER=" + sparqlUser,
+                "SPARQL_PASSWD=" + sparqlPwd,
+                "URLS="+String.join(",", seedURIs)};
 
         nutchInstance = createContainer(ANUTCH_IMAGE, CONTAINER_TYPE_SYSTEM, NUTCH_ENV);
 	}
@@ -84,7 +84,7 @@ public class SystemAdapter extends AbstractSystemAdapter {
             Exception e = null;
             if (exitCode != 0) {
                 // The ldspider had an error. Its time to panic
-                LOGGER.error("ldspider terminated with exit code {}.", exitCode);
+                LOGGER.error("apachenutch terminated with exit code {}.", exitCode);
                 e = new IllegalStateException("ldspider terminated with exit code " + exitCode + ".");
             }
             nutchInstance = null;
